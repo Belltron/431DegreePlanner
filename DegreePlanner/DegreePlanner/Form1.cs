@@ -35,7 +35,7 @@ namespace DegreePlanner
         {
             string connectionString = "Server=instance39020.db.xeround.com;Port=6887;Database=csv_db;Uid=admin;Pwd=password";
             MySqlConnection con = new MySqlConnection(connectionString);
-            string query = "SELECT * FROM `tbl_name` WHERE COURSENUMBER = 271 LIMIT 0,30";
+            string query = "SELECT * FROM `classes` WHERE Course_Num = 271 LIMIT 0,30";
             MySqlCommand cmd = new MySqlCommand(query);
             MySqlDataReader reader = null;
             string result = null;
