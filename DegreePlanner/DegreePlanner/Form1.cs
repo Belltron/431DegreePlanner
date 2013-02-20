@@ -75,6 +75,7 @@ namespace DegreePlanner
         private void listBox_MouseDown(object sender, MouseEventArgs e)
         {
             (sender as ListBox).DoDragDrop((sender as ListBox).SelectedItem, DragDropEffects.Move);
+            (sender as ListBox).Items.Remove((sender as ListBox).SelectedItem);
         }
 
         private void addHardCodedCourses()
