@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace DegreePlanner
 {
+    enum YearEnum
+    {
+        Freshman = 0, Sophomore, Junior, Senior, SuperSenior, SuperDuperSenior
+    }
+
+    enum SemesterEnum
+    {
+        Fall = 0, Spring, Summer1, Summer2
+    }
+    
     class Course
     {
         public string Description;
@@ -13,6 +23,8 @@ namespace DegreePlanner
         public int Hours;
         public string PreReq;
         public string Deptartment;
+        public YearEnum yearTaken;
+        public SemesterEnum semesterTaken;
 
         public Course(string deptartment, int courseNum, string description, int hours, string prereq)
         {
