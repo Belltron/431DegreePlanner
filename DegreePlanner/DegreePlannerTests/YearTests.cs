@@ -59,11 +59,9 @@ namespace DegreePlannerTests
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestYearSort()
         {
-            //
-            // TODO: Add test logic here
-            //
+            Year tempYear = new Year();
         }
     }
 }

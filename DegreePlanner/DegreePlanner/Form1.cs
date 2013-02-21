@@ -46,7 +46,7 @@ namespace DegreePlanner
             while (reader.Read())
             {                
                 result = reader.GetString(0) + " " + reader.GetString(1) + '\n';
-                Course addCourse = new Course(result);
+                Course addCourse = new Course(reader.GetString(0), reader.GetInt32(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
                 courseBox.Items.Add(addCourse);
             }
 

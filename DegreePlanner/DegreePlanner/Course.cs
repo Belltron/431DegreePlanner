@@ -13,6 +13,17 @@ namespace DegreePlanner
         public int Hours;
         public string PreReq;
         public string Deptartment;
+
+        public Course(string deptartment, int courseNum, string description, int hours, string prereq)
+        {
+            this.Deptartment = deptartment;
+            this.Description = description;
+            this.CourseNum = courseNum;
+            this.PreReq = prereq;
+            this.Hours = hours;
+
+        }
+
         public Course()
         {
             this.Deptartment = "";
@@ -21,6 +32,7 @@ namespace DegreePlanner
             this.PreReq = "";
             this.Hours = 0;
         }
+
         private string name;
         private List<Course> prerequisites;
 
