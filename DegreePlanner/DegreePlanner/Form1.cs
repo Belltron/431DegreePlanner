@@ -15,6 +15,11 @@ namespace DegreePlanner
     {
         public Form1()
         {
+            sqlQuery query = new sqlQuery();
+            List<Course> requiredCourses = query.getAllCoursesFromTable("required_classes");
+            List<Course> socialScienceCourses = query.getAllCoursesFromTable("icd_sse");
+            List<Course> performingArtsCourses = query.getAllCoursesFromTable("icd_vpae");
+            List<Course> scienceCourses = query.getAllCoursesFromTable("science_classes");
             InitializeComponent();
 
             foreach(Control ctrl in this.Controls)
@@ -28,30 +33,26 @@ namespace DegreePlanner
                 }
             }
 
-            addHardCodedCourses();
-        }
-
-        private void button1_click(object sender, EventArgs e)      // still messy from testing
-        {
-            string connectionString = "Server=instance39020.db.xeround.com;Port=6887;Database=csv_db;Uid=admin;Pwd=password";
-            MySqlConnection con = new MySqlConnection(connectionString);
-            string query = "SELECT * FROM `classes` WHERE Course_Num = 271 LIMIT 0,30";
-            MySqlCommand cmd = new MySqlCommand(query);
-            MySqlDataReader reader = null;
-            string result = null;
-            con.Open();
-            cmd.Connection = con;
-            reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {                
-                result = reader.GetString(0) + " " + reader.GetString(1) + '\n';
-                Course addCourse = new Course(reader.GetString(0), reader.GetInt32(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
-                courseBox.Items.Add(addCourse);
+            foreach (Course c in requiredCourses)
+            {
+                requiredCoursesBox.Items.Add(c);
             }
 
+            foreach (Course c in socialScienceCourses)
+            {
+                socialScienceBox.Items.Add(c);
+            }
 
-            con.Close();
+            foreach (Course c in performingArtsCourses)
+            {
+                performingArtsBox.Items.Add(c);
+            }
+
+            foreach (Course c in scienceCourses)
+            {
+                scienceBox.Items.Add(c);
+            }
+
         }
 
         private void listBox_DragDrop(object sender, DragEventArgs e)
@@ -78,9 +79,9 @@ namespace DegreePlanner
             (sender as ListBox).Items.Remove((sender as ListBox).SelectedItem);
         }
 
-        private void addHardCodedCourses()
+        private void getRequiredCourses()
         {
-            Course csce111 = new Course("CSCE 111");
+            /*Course csce111 = new Course("CSCE", 111, "", );
             Course csce121 = new Course("CSCE 121");
             Course csce181 = new Course("CSCE 181");
             Course csce221 = new Course("CSCE 221");
@@ -102,7 +103,7 @@ namespace DegreePlanner
             sophomoreSpring.Items.Add(csce314);
 
             juniorFall.Items.Add(csce313);
-            juniorFall.Items.Add(csce315);
+            juniorFall.Items.Add(csce315);*/
         }
 
 

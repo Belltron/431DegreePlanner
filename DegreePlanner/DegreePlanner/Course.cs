@@ -48,11 +48,6 @@ namespace DegreePlanner
         private string name;
         private List<Course> prerequisites;
 
-        public Course(string n)
-        {
-            name = n;
-        }
-
         public List<Course> getPrerequisites()
         {
             return prerequisites;
