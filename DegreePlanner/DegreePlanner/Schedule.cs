@@ -19,6 +19,14 @@ namespace DegreePlanner
 
         public Semester getSemester(ListBox lb)
         {
+            /*
+             This code can be replaced with these two lines
+             * It returns the semester if its there or it returns a blank semester
+             
+            Semester rvalue = semesters.SingleOrDefault(s => s.semesterBox == lb);
+            return rvalue ?? new Semester();
+             * 
+             */
             foreach (Semester s in semesters)
             {
                 if (s.getSemesterBox() == lb)
