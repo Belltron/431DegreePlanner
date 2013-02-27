@@ -21,6 +21,7 @@ namespace DegreePlanner
         public string Description;
         public int CourseNum;
         public int Hours;
+        private List<Course> prerequisitesList;
         public string PreReq;
         public string Department;
         public YearEnum yearTaken;
@@ -33,7 +34,12 @@ namespace DegreePlanner
             this.CourseNum = courseNum;
             this.PreReq = prereq;
             this.Hours = hours;
+            this.prerequisitesList = this.getPrerequisitesFromDatabase();
+        }
 
+        public List<Course> getPreRequisites()
+        {
+            return this.prerequisitesList;
         }
 
         public Course()
@@ -46,11 +52,28 @@ namespace DegreePlanner
         }
 
         private string name;
-        private List<Course> prerequisites;
 
-        public List<Course> getPrerequisites()
+        public List<Course> getPrerequisitesFromDatabase()
         {
-            return prerequisites;
+            List<Course> rvalue = new List<Course>();
+            string[] preReqsArray = this.PreReq.Split(',');
+            foreach (string pr in preReqsArray)
+            {
+                List<string> splitCourseList = pr.Split(' ').ToList();
+                if (splitCourseList.Count > 2)
+                {
+                    for (int i = 0; i < splitCourseList.Count; i++)
+                    {
+                        if (splitCourseList[i] == "")
+                        {
+                            splitCourseList.RemoveAt(i);
+                            i--;
+                        }
+                    }
+                }
+                rvalue.Add(sqlQuery.getCourseByDeptCourseNum(splitCourseList[0],splitCourseList[1]));
+            }
+            return rvalue;
         }
 
         public override string ToString()    //called ToString so that the name representation is given in a listBox

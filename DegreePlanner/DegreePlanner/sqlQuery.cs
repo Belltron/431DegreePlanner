@@ -7,11 +7,11 @@ using MySql.Data.MySqlClient;
 
 namespace DegreePlanner
 {
-    class sqlQuery
+    static class sqlQuery
     {
-        private string connectionString = "Server=instance39020.db.xeround.com;Port=6887;Database=csv_db;Uid=admin;Pwd=password";     
+        static private string connectionString = "Server=instance39020.db.xeround.com;Port=6887;Database=csv_db;Uid=admin;Pwd=password";     
 
-        public List<Course> getAllCoursesFromTable(String tableName)
+        static public List<Course> getAllCoursesFromTable(String tableName)
         {
             List<Course> courses = new List<Course>();
             MySqlConnection con = new MySqlConnection(connectionString);
@@ -31,6 +31,26 @@ namespace DegreePlanner
             }
             con.Close();
             return courses;
+        }
+
+        static public Course getCourseByDeptCourseNum(string dept, string courseNum)
+        {
+            Course rvalue = new Course();
+            MySqlConnection con = new MySqlConnection(connectionString);
+            string query = "SELECT * FROM `classes` WHERE Department = " + dept + " AND Course_Num = " + courseNum;
+            MySqlCommand cmd = new MySqlCommand(query);
+            MySqlDataReader reader = null;
+            string result = null;
+            con.Open();
+            cmd.Connection = con;
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                rvalue = new Course(reader.GetString(0), reader.GetInt32(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
+            }
+            con.Close();
+            return rvalue;
         }
 
     }
