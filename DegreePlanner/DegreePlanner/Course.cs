@@ -34,7 +34,7 @@ namespace DegreePlanner
             this.CourseNum = courseNum;
             this.PreReq = prereq;
             this.Hours = hours;
-            this.prerequisitesList = this.getPrerequisitesFromDatabase();
+            //this.prerequisitesList = this.getPrerequisitesFromDatabase();
         }
 
         public List<Course> getPreRequisites()
@@ -83,7 +83,7 @@ namespace DegreePlanner
 
         public void addPrerequisite(Course pre)
         {
-            prerequisites.Add(pre);
+            prerequisitesList.Add(pre);
         }
 
         public static bool operator ==(Course c1, Course c2)
