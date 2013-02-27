@@ -51,6 +51,7 @@ namespace DegreePlanner
             foreach (Course c in requiredCourses)
             {
                 requiredCoursesBox.Items.Add(c);
+         
             }
 
             foreach (Course c in socialScienceCourses)
