@@ -22,13 +22,13 @@ namespace DegreePlanner
         public int CourseNum;
         public int Hours;
         public string PreReq;
-        public string Deptartment;
+        public string Department;
         public YearEnum yearTaken;
         public SemesterEnum semesterTaken;
 
-        public Course(string deptartment, int courseNum, string description, int hours, string prereq)
+        public Course(string department, int courseNum, string description, int hours, string prereq)
         {
-            this.Deptartment = deptartment;
+            this.Department = department;
             this.Description = description;
             this.CourseNum = courseNum;
             this.PreReq = prereq;
@@ -38,7 +38,7 @@ namespace DegreePlanner
 
         public Course()
         {
-            this.Deptartment = "";
+            this.Department = "";
             this.Description = "";
             this.CourseNum = 0;
             this.PreReq = "";
@@ -55,12 +55,33 @@ namespace DegreePlanner
 
         public override string ToString()    //called ToString so that the name representation is given in a listBox
         {
-            return this.Deptartment + " " + this.CourseNum;
+            return this.Department + " " + this.CourseNum;
         }
 
         public void addPrerequisite(Course pre)
         {
             prerequisites.Add(pre);
         }
+
+        public static bool operator ==(Course c1, Course c2)
+        {
+          
+            try{
+         
+                if (((c1.Department) == (c2.Department)) && ((c1.CourseNum) == c2.CourseNum) && (c1.Description == c2.Description)
+                    && (c1.Hours == c2.Hours) && (c1.PreReq == c2.PreReq))
+                    return true;
+
+                else return false;
+            }
+            catch (NullReferenceException) { return false; }                
+       
+        }
+
+        public static bool operator !=(Course c1, Course c2)
+        {
+            return (!(c1 == c2));
+        }
+
     }
 }

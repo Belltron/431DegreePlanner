@@ -13,14 +13,30 @@ namespace DegreePlanner
 {
     public partial class Form1 : Form
     {
+        Schedule schedule = new Schedule();
+
         public Form1()
         {
+            Schedule schedule = new Schedule();
+
             sqlQuery query = new sqlQuery();
             List<Course> requiredCourses = query.getAllCoursesFromTable("required_classes");
             List<Course> socialScienceCourses = query.getAllCoursesFromTable("icd_sse");
             List<Course> performingArtsCourses = query.getAllCoursesFromTable("icd_vpae");
             List<Course> scienceCourses = query.getAllCoursesFromTable("science_classes");
             InitializeComponent();
+            
+            addSemester((SemesterEnum)0, (YearEnum)0);
+            addSemester((SemesterEnum)1, (YearEnum)0);
+
+            addSemester((SemesterEnum)0, (YearEnum)1);
+            addSemester((SemesterEnum)1, (YearEnum)1);
+
+            addSemester((SemesterEnum)0, (YearEnum)2);
+            addSemester((SemesterEnum)1, (YearEnum)2);
+
+            addSemester((SemesterEnum)0, (YearEnum)3);
+            addSemester((SemesterEnum)1, (YearEnum)3);            
 
             foreach(Control ctrl in this.Controls)
             {
@@ -55,12 +71,28 @@ namespace DegreePlanner
 
         }
 
+        private void addSemester(SemesterEnum id, YearEnum y)
+        {
+            Semester semester = new Semester(id,y);
+            schedule.addSem(semester);
+
+            semester.semesterBox.SetBounds(130*((int)id) + 75, 105*((int)y) + 60, 120, 95);
+            this.Controls.Add(semester.semesterBox);
+        }
+
         private void listBox_DragDrop(object sender, DragEventArgs e)
         {
             object itemToMove = e.Data.GetData(typeof(Course));
-            if (itemToMove == null) { return; }
+            Course course = (Course)itemToMove;
+            if (course == null) { return; }
 
-            (sender as ListBox).Items.Add(itemToMove);
+            course.semesterTaken = schedule.getSemester((sender as ListBox)).getID();
+            course.yearTaken = schedule.getSemester((sender as ListBox)).getYear();
+
+            (sender as ListBox).Items.Add(course);
+            
+            String output = "Added " + course.ToString() + " to semester " + course.semesterTaken + ", " + course.yearTaken;
+            actionView.Items.Add(output);
         }
 
         private void listBox_DragOver(object sender, DragEventArgs e)
@@ -75,8 +107,12 @@ namespace DegreePlanner
 
         private void listBox_MouseDown(object sender, MouseEventArgs e)
         {
-            (sender as ListBox).DoDragDrop((sender as ListBox).SelectedItem, DragDropEffects.Move);
-            (sender as ListBox).Items.Remove((sender as ListBox).SelectedItem);
+            if(((sender as ListBox).SelectedItem) != null)
+            {
+                (sender as ListBox).DoDragDrop((sender as ListBox).SelectedItem, DragDropEffects.Move);
+                (sender as ListBox).Items.Remove((sender as ListBox).SelectedItem);
+                
+            }
         }
             
     }

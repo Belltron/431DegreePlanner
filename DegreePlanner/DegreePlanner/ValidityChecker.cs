@@ -8,39 +8,43 @@ namespace DegreePlanner
 {
     static class ValidityChecker
     {
-        static public bool ValidPreReqs(Schedule input)
+      /*  static public bool ValidPreReqs(Schedule input)
         {
             bool validPreReqs = true;
-            foreach (Course course in input.Courses)
+            List<Semester> sems = input.getSemesters();
+            foreach (Semester sem in sems)
             {
-                if (course.PreReq != "")
+                foreach (Course course in sem.semesterBox.Items)
                 {
-                    string[] preReqs = course.PreReq.Split(',');
-                    foreach (string preReq in preReqs)
+                    if (course.PreReq != "")
                     {
-                        Course tempCourse =
-                        input.Courses.Find(c => (preReq.Contains(c.Deptartment)) && preReq.Contains(c.CourseNum.ToString()));
-                        //Pre Req not taken at all
-                        if (tempCourse == null)
+                        string[] preReqs = course.PreReq.Split(',');
+                        foreach (string preReq in preReqs)
                         {
-                            return false;
-                        }
-                        //Pre Req is taken at right time
-                        else if ((tempCourse.yearTaken < course.yearTaken) ||
-                                 ((tempCourse.yearTaken == course.yearTaken) &&
-                                  tempCourse.semesterTaken < course.semesterTaken))
-                        {
-                            validPreReqs = true;
-                        }
-                        //Pre Req not taken before class
-                        else
-                        {
-                            return false;
+                            Course tempCourse =
+                            input.Courses.Find(c => (preReq.Contains(c.Department)) && preReq.Contains(c.CourseNum.ToString()));
+                            //Pre Req not taken at all
+                            if (tempCourse == null)
+                            {
+                                return false;
+                            }
+                            //Pre Req is taken at right time
+                            else if ((tempCourse.yearTaken < course.yearTaken) ||
+                                     ((tempCourse.yearTaken == course.yearTaken) &&
+                                      tempCourse.semesterTaken < course.semesterTaken))
+                            {
+                                validPreReqs = true;
+                            }
+                            //Pre Req not taken before class
+                            else
+                            {
+                                return false;
+                            }
                         }
                     }
                 }
             }
             return validPreReqs;
-        }
+        }*/
     }
 }
