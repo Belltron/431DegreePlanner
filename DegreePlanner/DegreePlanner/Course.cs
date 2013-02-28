@@ -80,11 +80,6 @@ namespace DegreePlanner
             }
             sqlQuery.sqlClose(con);
             return rvalue;
-                rvalue.Add(sqlQuery.getCourseByDeptCourseNum(con,splitCourseList[0],splitCourseList[1]));
-
-            }
-            sqlQuery.sqlClose(con);
-            return rvalue;
         }
 
         public override string ToString()    //called ToString so that the name representation is given in a listBox
