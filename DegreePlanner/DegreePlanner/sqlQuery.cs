@@ -53,5 +53,39 @@ namespace DegreePlanner
             return rvalue;
         }
 
+        static public Course getCourseByDeptCourseNum(MySqlConnection con, string dept, string courseNum)
+        {
+            Course rvalue = new Course();
+           // MySqlConnection con = new MySqlConnection(connectionString);
+            string query = "SELECT * FROM `classes` WHERE Department = \"" + dept + "\" AND Course_Num = " + courseNum;
+            MySqlCommand cmd = new MySqlCommand(query);
+            MySqlDataReader reader = null;
+            string result = null;
+         //   con.Open();
+            cmd.Connection = con;
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                rvalue = new Course(reader.GetString(0), reader.GetInt32(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
+            }
+         //   con.Close();
+            reader.Close();
+            return rvalue;
+        }
+
+        static public MySqlConnection sqlConnect()
+        {
+            MySqlConnection con = new MySqlConnection(connectionString);
+            return con;
+        }
+
+        static public void sqlClose(MySqlConnection con)
+        {
+            con.Close();
+            return;
+        }
+
+
     }
 }

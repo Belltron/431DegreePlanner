@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace DegreePlanner
 {
@@ -34,7 +35,7 @@ namespace DegreePlanner
             this.CourseNum = courseNum;
             this.PreReq = prereq;
             this.Hours = hours;
-            //this.prerequisitesList = this.getPrerequisitesFromDatabase();
+       //     this.prerequisitesList = this.getPrerequisitesFromDatabase();
         }
 
         public List<Course> getPreRequisites()
@@ -56,7 +57,10 @@ namespace DegreePlanner
         public List<Course> getPrerequisitesFromDatabase()
         {
             List<Course> rvalue = new List<Course>();
+            if (this.PreReq == "")
+                return rvalue;
             string[] preReqsArray = this.PreReq.Split(',');
+            MySqlConnection con = sqlQuery.sqlConnect();
             foreach (string pr in preReqsArray)
             {
                 List<string> splitCourseList = pr.Split(' ').ToList();
@@ -71,8 +75,10 @@ namespace DegreePlanner
                         }
                     }
                 }
-                rvalue.Add(sqlQuery.getCourseByDeptCourseNum(splitCourseList[0],splitCourseList[1]));
+                rvalue.Add(sqlQuery.getCourseByDeptCourseNum(con,splitCourseList[0],splitCourseList[1]));
+
             }
+            sqlQuery.sqlClose(con);
             return rvalue;
         }
 
