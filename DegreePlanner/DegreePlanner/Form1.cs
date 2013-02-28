@@ -19,11 +19,10 @@ namespace DegreePlanner
         {
             Schedule schedule = new Schedule();
 
-            sqlQuery query = new sqlQuery();
-            List<Course> requiredCourses = query.getAllCoursesFromTable("required_classes");
-            List<Course> socialScienceCourses = query.getAllCoursesFromTable("icd_sse");
-            List<Course> performingArtsCourses = query.getAllCoursesFromTable("icd_vpae");
-            List<Course> scienceCourses = query.getAllCoursesFromTable("science_classes");
+            List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
+            List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
+            List<Course> performingArtsCourses = sqlQuery.getAllCoursesFromTable("icd_vpae");
+            List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
             InitializeComponent();
             
             addSemester((SemesterEnum)0, (YearEnum)0);
@@ -52,6 +51,7 @@ namespace DegreePlanner
             foreach (Course c in requiredCourses)
             {
                 requiredCoursesBox.Items.Add(c);
+         
             }
 
             foreach (Course c in socialScienceCourses)
