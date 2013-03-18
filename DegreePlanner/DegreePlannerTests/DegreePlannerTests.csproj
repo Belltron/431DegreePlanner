@@ -53,6 +53,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YearTests.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DegreePlanner\DegreePlanner.csproj">
+      <Project>{04a2d5bb-78c3-4a4a-b938-2e1f7481f84a}</Project>
+      <Name>DegreePlanner</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
