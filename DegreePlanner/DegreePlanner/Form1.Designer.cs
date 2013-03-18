@@ -43,6 +43,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.actionView = new System.Windows.Forms.ListView();
+            this.BaseSchedule = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -102,7 +103,7 @@
             // requiredCoursesBox
             // 
             this.requiredCoursesBox.FormattingEnabled = true;
-            this.requiredCoursesBox.Location = new System.Drawing.Point(430, 116);
+            this.requiredCoursesBox.Location = new System.Drawing.Point(430, 65);
             this.requiredCoursesBox.Name = "requiredCoursesBox";
             this.requiredCoursesBox.Size = new System.Drawing.Size(120, 95);
             this.requiredCoursesBox.TabIndex = 17;
@@ -110,7 +111,7 @@
             // scienceBox
             // 
             this.scienceBox.FormattingEnabled = true;
-            this.scienceBox.Location = new System.Drawing.Point(430, 268);
+            this.scienceBox.Location = new System.Drawing.Point(430, 219);
             this.scienceBox.Name = "scienceBox";
             this.scienceBox.Size = new System.Drawing.Size(120, 95);
             this.scienceBox.TabIndex = 18;
@@ -118,7 +119,7 @@
             // socialScienceBox
             // 
             this.socialScienceBox.FormattingEnabled = true;
-            this.socialScienceBox.Location = new System.Drawing.Point(637, 268);
+            this.socialScienceBox.Location = new System.Drawing.Point(637, 219);
             this.socialScienceBox.Name = "socialScienceBox";
             this.socialScienceBox.Size = new System.Drawing.Size(120, 95);
             this.socialScienceBox.TabIndex = 19;
@@ -126,7 +127,7 @@
             // performingArtsBox
             // 
             this.performingArtsBox.FormattingEnabled = true;
-            this.performingArtsBox.Location = new System.Drawing.Point(637, 116);
+            this.performingArtsBox.Location = new System.Drawing.Point(637, 65);
             this.performingArtsBox.Name = "performingArtsBox";
             this.performingArtsBox.Size = new System.Drawing.Size(120, 95);
             this.performingArtsBox.TabIndex = 20;
@@ -134,7 +135,7 @@
             // RequiredCourses
             // 
             this.RequiredCourses.AutoSize = true;
-            this.RequiredCourses.Location = new System.Drawing.Point(444, 94);
+            this.RequiredCourses.Location = new System.Drawing.Point(442, 34);
             this.RequiredCourses.Name = "RequiredCourses";
             this.RequiredCourses.Size = new System.Drawing.Size(88, 13);
             this.RequiredCourses.TabIndex = 21;
@@ -143,7 +144,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(655, 94);
+            this.label8.Location = new System.Drawing.Point(655, 34);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 22;
@@ -152,7 +153,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(458, 245);
+            this.label9.Location = new System.Drawing.Point(463, 185);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 23;
@@ -161,7 +162,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(655, 245);
+            this.label10.Location = new System.Drawing.Point(655, 185);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 13);
             this.label10.TabIndex = 24;
@@ -176,11 +177,22 @@
             this.actionView.UseCompatibleStateImageBehavior = false;
             this.actionView.View = System.Windows.Forms.View.List;
             // 
+            // BaseSchedule
+            // 
+            this.BaseSchedule.Location = new System.Drawing.Point(430, 332);
+            this.BaseSchedule.Name = "BaseSchedule";
+            this.BaseSchedule.Size = new System.Drawing.Size(119, 40);
+            this.BaseSchedule.TabIndex = 27;
+            this.BaseSchedule.Text = "Generate Base Schedule";
+            this.BaseSchedule.UseVisualStyleBackColor = true;
+            this.BaseSchedule.Click += new System.EventHandler(this.BaseSchedule_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 496);
+            this.Controls.Add(this.BaseSchedule);
             this.Controls.Add(this.actionView);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -220,6 +232,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ListView actionView;
+        private System.Windows.Forms.Button BaseSchedule;
     }
 }
 

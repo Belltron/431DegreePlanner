@@ -10,8 +10,8 @@ namespace DegreePlanner
     class Semester
     {
         public ListBox semesterBox;
-        private SemesterEnum ID;
-        private YearEnum year;
+        public SemesterEnum ID;
+        public YearEnum year;
 
         public Semester()
         {

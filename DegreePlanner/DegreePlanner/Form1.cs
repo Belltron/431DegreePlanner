@@ -114,6 +114,119 @@ namespace DegreePlanner
                 
             }
         }
+
+        private void BaseSchedule_Click(object sender, EventArgs e)
+        {
+            List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
+            List<Semester> semesters = schedule.getSemesters();
+            foreach (Semester s in semesters)
+            {
+                if (s.ID == SemesterEnum.Fall && s.year == YearEnum.Freshman)
+                {
+                    //s.semesterBox.Items.Add( element in requiredcourses list where element.CourseNum = 121 and element.Department = CSCE
+                    Course csce121 = requiredCourses.SingleOrDefault(c => c.CourseNum == 121 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce121);
+                    requiredCoursesBox.Items.Remove(csce121);
+
+                    Course csce181 = requiredCourses.SingleOrDefault(c => c.CourseNum == 181 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce181);
+                    requiredCoursesBox.Items.Remove(csce181);
+
+                    Course engl104 = requiredCourses.SingleOrDefault(c => c.CourseNum == 104 && c.Department == ("ENGL"));
+                    s.semesterBox.Items.Add(engl104);
+                    requiredCoursesBox.Items.Remove(engl104);
+
+                    Course math151 = requiredCourses.SingleOrDefault(c => c.CourseNum == 151 && c.Department == ("MATH"));
+                    s.semesterBox.Items.Add(math151);
+                    requiredCoursesBox.Items.Remove(math151);
+                }
+                else if (s.ID == SemesterEnum.Spring && s.year == YearEnum.Freshman)
+                {
+                    Course csce221 = requiredCourses.SingleOrDefault(c => c.CourseNum == 221 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce221);
+                    requiredCoursesBox.Items.Remove(csce221);
+
+                    Course csce222 = requiredCourses.SingleOrDefault(c => c.CourseNum == 222 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce222);
+                    requiredCoursesBox.Items.Remove(csce222);
+
+
+                    Course math152 = requiredCourses.SingleOrDefault(c => c.CourseNum == 152 && c.Department == ("MATH"));
+                    s.semesterBox.Items.Add(math152);
+                    requiredCoursesBox.Items.Remove(math152);
+
+                    Course kine198 = requiredCourses.SingleOrDefault(c => c.CourseNum == 198 && c.Department == ("KINE"));
+                    s.semesterBox.Items.Add(kine198);
+                    requiredCoursesBox.Items.Remove(kine198);
+                }
+                else if (s.ID == SemesterEnum.Fall && s.year == YearEnum.Sophomore)
+                {
+                    Course csce312 = requiredCourses.SingleOrDefault(c => c.CourseNum == 312 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce312);
+                    requiredCoursesBox.Items.Remove(csce312);
+
+                    Course csce314 = requiredCourses.SingleOrDefault(c => c.CourseNum == 314 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce314);
+                    requiredCoursesBox.Items.Remove(csce314);
+
+                    Course math302 = requiredCourses.SingleOrDefault(c => c.CourseNum == 302 && c.Department == ("MATH"));
+                    s.semesterBox.Items.Add(math302);
+                    requiredCoursesBox.Items.Remove(math302);
+
+                    Course pols206 = requiredCourses.SingleOrDefault(c => c.CourseNum == 206 && c.Department == ("POLS"));
+                    s.semesterBox.Items.Add(pols206);
+                    requiredCoursesBox.Items.Remove(pols206);
+                }
+                else if (s.ID == SemesterEnum.Spring && s.year == YearEnum.Sophomore)
+                {
+                    Course csce313 = requiredCourses.SingleOrDefault(c => c.CourseNum == 313 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce313);
+                    requiredCoursesBox.Items.Remove(csce313);
+
+                    Course csce315 = requiredCourses.SingleOrDefault(c => c.CourseNum == 315 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce315);
+                    requiredCoursesBox.Items.Remove(csce315);
+
+                    Course stat211 = requiredCourses.SingleOrDefault(c => c.CourseNum == 211 && c.Department == ("STAT"));
+                    s.semesterBox.Items.Add(stat211);
+                    requiredCoursesBox.Items.Remove(stat211);
+
+                    Course pols207 = requiredCourses.SingleOrDefault(c => c.CourseNum == 207 && c.Department == ("POLS"));
+                    s.semesterBox.Items.Add(pols207);
+                    requiredCoursesBox.Items.Remove(pols207);
+                }
+                else if (s.ID == SemesterEnum.Fall && s.year == YearEnum.Junior)
+                {
+                    Course csce481 = requiredCourses.SingleOrDefault(c => c.CourseNum == 481 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce481);
+                    requiredCoursesBox.Items.Remove(csce481);
+                }
+                else if (s.ID == SemesterEnum.Spring && s.year == YearEnum.Junior)
+                {
+                    Course csce411 = requiredCourses.SingleOrDefault(c => c.CourseNum == 411 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce411);
+                    requiredCoursesBox.Items.Remove(csce411);
+                }
+                else if (s.ID == SemesterEnum.Fall && s.year == YearEnum.Senior)
+                {
+                    Course kine199 = requiredCourses.SingleOrDefault(c => c.CourseNum == 199 && c.Department == ("KINE"));
+                    s.semesterBox.Items.Add(kine199);
+                    requiredCoursesBox.Items.Remove(kine199);
+                }
+                else if (s.ID == SemesterEnum.Spring && s.year == YearEnum.Senior)
+                {
+                    Course csce482 = requiredCourses.SingleOrDefault(c => c.CourseNum == 482 && c.Department == ("CSCE"));
+                    s.semesterBox.Items.Add(csce482);
+                    requiredCoursesBox.Items.Remove(csce482);
+
+                    Course engr482 = requiredCourses.SingleOrDefault(c => c.CourseNum == 482 && c.Department == ("ENGR"));
+                    s.semesterBox.Items.Add(engr482);
+                    requiredCoursesBox.Items.Remove(engr482);
+                }
+            }
+            requiredCoursesBox.Items.Clear();
+            BaseSchedule.Hide();
+        }
             
     }
 }
