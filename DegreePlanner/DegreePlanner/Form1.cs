@@ -227,6 +227,12 @@ namespace DegreePlanner
             requiredCoursesBox.Items.Clear();
             BaseSchedule.Hide();
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FileSystem f = new FileSystem();
+            f.writeToFile(schedule);
+        }
             
     }
 }
