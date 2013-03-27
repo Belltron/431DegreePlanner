@@ -107,13 +107,45 @@ namespace DegreePlanner
 
         private void listBox_MouseDown(object sender, MouseEventArgs e)
         {
-            if(((sender as ListBox).SelectedItem) != null)
+            (sender as ListBox).SelectedIndex = (sender as ListBox).IndexFromPoint(e.X, e.Y);
+            if (e.Button == MouseButtons.Right)         // right click
+            {
+                Course c = new Course();
+                c = (Course)(sender as ListBox).SelectedItem;
+                ContextMenuStrip cms = new ContextMenuStrip();
+                string s = "More Information...";                
+                
+                ToolStripMenuItem getMoreInfo = new ToolStripMenuItem(s);               
+               
+                getMoreInfo.Click += new EventHandler((fake,d) => moreCourseInfoClick(fake,d,c));
+                cms.Items.AddRange(new ToolStripItem[] {getMoreInfo});
+                cms.Visible = true;
+                cms.SetBounds(Cursor.Position.X, Cursor.Position.Y, 50, 50);
+                if (this.ParentForm != null)
+                {
+                    this.ParentForm.Controls.Add(cms);
+                }                
+            }
+
+            else if(((sender as ListBox).SelectedItem) != null)          //drag
             {
                 (sender as ListBox).DoDragDrop((sender as ListBox).SelectedItem, DragDropEffects.Move);
                 (sender as ListBox).Items.Remove((sender as ListBox).SelectedItem);
                 
             }
         }
+
+        private void moreCourseInfoClick(object sender, EventArgs e, Course course)
+        {
+            try
+            {
+                additionalInfo ad = new additionalInfo(course.Description);
+                ad.Show();
+            }
+            catch (NullReferenceException) { }
+        }
+
+
 
         private void BaseSchedule_Click(object sender, EventArgs e)
         {

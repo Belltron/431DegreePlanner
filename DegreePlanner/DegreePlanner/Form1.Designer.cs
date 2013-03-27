@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,6 +45,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.actionView = new System.Windows.Forms.ListView();
             this.BaseSchedule = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.moreInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -187,6 +191,19 @@
             this.BaseSchedule.UseVisualStyleBackColor = true;
             this.BaseSchedule.Click += new System.EventHandler(this.BaseSchedule_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.moreInformationToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(178, 26);
+            // 
+            // moreInformationToolStripMenuItem
+            // 
+            this.moreInformationToolStripMenuItem.Name = "moreInformationToolStripMenuItem";
+            this.moreInformationToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.moreInformationToolStripMenuItem.Text = "More Information...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +227,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,6 +251,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ListView actionView;
         private System.Windows.Forms.Button BaseSchedule;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem moreInformationToolStripMenuItem;
     }
 }
 
