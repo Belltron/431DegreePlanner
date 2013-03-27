@@ -7,17 +7,17 @@ using MySql.Data.MySqlClient;
 
 namespace DegreePlanner
 {
-    enum YearEnum
+    public enum YearEnum
     {
         Freshman = 0, Sophomore, Junior, Senior, SuperSenior, SuperDuperSenior
     }
 
-    enum SemesterEnum
+    public enum SemesterEnum
     {
         Fall = 0, Spring, Summer1, Summer2
     }
     
-    class Course
+    public class Course
     {
         public string Description;
         public int CourseNum;

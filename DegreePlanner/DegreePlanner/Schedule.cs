@@ -10,7 +10,7 @@ namespace DegreePlanner
     class Schedule
     {
      //   public List<Course> Courses = new List<Course>();
-        private List<Semester> semesters = new List<Semester>();
+        public List<Semester> semesters = new List<Semester>();
 
         public void addSem(Semester s)
         {

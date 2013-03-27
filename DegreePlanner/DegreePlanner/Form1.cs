@@ -139,7 +139,7 @@ namespace DegreePlanner
         {
             try
             {
-                additionalInfo ad = new additionalInfo(course.Description);
+                additionalInfo ad = new additionalInfo(course);
                 ad.Show();
             }
             catch (NullReferenceException) { }

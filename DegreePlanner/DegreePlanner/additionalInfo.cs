@@ -17,12 +17,14 @@ namespace DegreePlanner
             InitializeComponent();
         }
 
-        public additionalInfo(string courseDescription)
+        public additionalInfo(Course course)
         {
             InitializeComponent();
-            Label label = new Label();
-            label.Text = courseDescription;
-            this.Controls.Add(label);
+
+            courseName.Text = "Course: " + course.Department + " " + course.CourseNum;
+            courseHours.Text = "House: " + (course.Hours).ToString();
+            courseDescription.Text = "Description: " + course.Description;
+            coursePreReqs.Text = "Prerequisites: ";
 
         }
     }

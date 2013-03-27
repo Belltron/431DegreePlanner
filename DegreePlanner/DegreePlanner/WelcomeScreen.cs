@@ -21,10 +21,10 @@ namespace DegreePlanner
          private void proceedToSchedule(object sender, EventArgs e)
         {
             this.Hide();
-           // WelcomeScreen point = this;
+            //WelcomeScreen point = this;
             Form1 f = new Form1();
             f.Show();
-            //point.Close();
+           // point.Close();
         }
     }
 }
