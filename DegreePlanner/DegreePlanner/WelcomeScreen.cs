@@ -16,15 +16,20 @@ namespace DegreePlanner
         public WelcomeScreen()
         {
             InitializeComponent();
+            label1.BackColor = Color.Transparent;
+            Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
+            this.BackgroundImage = image;
         }
 
          private void proceedToSchedule(object sender, EventArgs e)
         {
-            this.Hide();
-            //WelcomeScreen point = this;
+            this.Cursor = Cursors.WaitCursor;
             Form1 f = new Form1();
-            f.Show();
-           // point.Close();
+            this.Hide();
+            this.Cursor = Cursors.Default;
+            f.ShowDialog();
+            this.Show();
         }
+
     }
 }

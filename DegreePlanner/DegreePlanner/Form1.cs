@@ -17,6 +17,9 @@ namespace DegreePlanner
 
         public Form1()
         {
+            Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
+            this.BackgroundImage = image;
+
             Schedule schedule = new Schedule();
 
             List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");

@@ -22,10 +22,15 @@ namespace DegreePlanner
             InitializeComponent();
 
             courseName.Text = "Course: " + course.Department + " " + course.CourseNum;
-            courseHours.Text = "House: " + (course.Hours).ToString();
+            courseHours.Text = "Hours: " + (course.Hours).ToString();
             courseDescription.Text = "Description: " + course.Description;
-            coursePreReqs.Text = "Prerequisites: ";
+            coursePreReqs.Text = "Prerequisites: " + course.PreReq;
 
+        }
+
+        private void closeWindow(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
