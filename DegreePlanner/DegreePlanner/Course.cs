@@ -35,7 +35,26 @@ namespace DegreePlanner
             this.CourseNum = courseNum;
             this.PreReq = prereq;
             this.Hours = hours;
+            this.buildPreReqs();
        //     this.prerequisitesList = this.getPrerequisitesFromDatabase();
+        }
+
+        private void buildPreReqs()
+        {
+            if (PreReq != "" && PreReq != " ")
+            {
+                this.prerequisitesList = new List<Course>();
+                List<String> preReqStrings = PreReq.Split(',').ToList();
+                foreach (string preReqString in preReqStrings)
+                {
+                    String[] preReqDetails = preReqString.Trim().Split(' ');
+                    this.prerequisitesList.Add(new Course(preReqDetails[0], Int32.Parse(preReqDetails[1]), "", 0, ""));
+                }
+            }
+            else
+            {
+                this.prerequisitesList = new List<Course>();
+            }
         }
 
         public List<Course> getPreRequisites()
