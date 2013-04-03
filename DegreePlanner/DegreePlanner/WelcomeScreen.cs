@@ -13,16 +13,21 @@ namespace DegreePlanner
 {
     public partial class WelcomeScreen : Form
     {
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+
         public WelcomeScreen()
         {
             InitializeComponent();
             label1.BackColor = Color.Transparent;
             Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
             this.BackgroundImage = image;
+            this.Controls.Add(loading);
+        
         }
 
          private void proceedToSchedule(object sender, EventArgs e)
         {
+    
             this.Cursor = Cursors.WaitCursor;
             Form1 f = new Form1();
             this.Hide();

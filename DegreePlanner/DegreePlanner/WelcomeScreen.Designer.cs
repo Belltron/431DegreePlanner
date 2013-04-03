@@ -30,6 +30,7 @@
         {
             this.startButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.loading = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // startButton
@@ -54,11 +55,20 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome to the CPSC Degree Planner";
             // 
+            // loading
+            // 
+            this.loading.AutoSize = true;
+            this.loading.Location = new System.Drawing.Point(588, 215);
+            this.loading.Name = "loading";
+            this.loading.Size = new System.Drawing.Size(0, 13);
+            this.loading.TabIndex = 2;
+            // 
             // WelcomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 496);
+            this.Controls.Add(this.loading);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.startButton);
             this.Name = "WelcomeScreen";
@@ -72,5 +82,6 @@
 
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label loading;
     }
 }

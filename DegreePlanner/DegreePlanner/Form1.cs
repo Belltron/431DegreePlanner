@@ -14,18 +14,20 @@ namespace DegreePlanner
     public partial class Form1 : Form
     {
         Schedule schedule = new Schedule();
+       /* List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
+        List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
+        List<Course> performingArtsCourses = sqlQuery.getAllCoursesFromTable("icd_vpae");
+        List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
+        List<Course> allCsCourses = sqlQuery.getAllCoursesFromTable("csce_all");*/
 
         public Form1()
         {
             Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
             this.BackgroundImage = image;
 
-            Schedule schedule = new Schedule();
+          //  Schedule schedule = new Schedule();
 
-            List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
-            List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
-            List<Course> performingArtsCourses = sqlQuery.getAllCoursesFromTable("icd_vpae");
-            List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
+            
             InitializeComponent();
             
             addSemester((SemesterEnum)0, (YearEnum)0);
@@ -51,7 +53,7 @@ namespace DegreePlanner
                 }
             }
 
-            foreach (Course c in requiredCourses)
+       /*     foreach (Course c in requiredCourses)
             {
                 requiredCoursesBox.Items.Add(c);
          
@@ -71,6 +73,11 @@ namespace DegreePlanner
             {
                 scienceBox.Items.Add(c);
             }
+
+            foreach (Course c in allCsCourses)
+            {
+                allCsBox.Items.Add(c);
+            }*/
 
         }
 
@@ -94,8 +101,8 @@ namespace DegreePlanner
 
             (sender as ListBox).Items.Add(course);
             
-            String output = "Added " + course.ToString() + " to semester " + course.semesterTaken + ", " + course.yearTaken;
-            actionView.Items.Add(output);
+          //  String output = "Added " + course.ToString() + " to semester " + course.semesterTaken + ", " + course.yearTaken;
+           // actionView.Items.Add(output);
         }
 
         private void listBox_DragOver(object sender, DragEventArgs e)
@@ -261,6 +268,109 @@ namespace DegreePlanner
             }
             requiredCoursesBox.Items.Clear();
             BaseSchedule.Hide();
+        }
+
+        private void scheduleReset(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (Control ctrl in this.Controls)
+                {
+                    if (ctrl is ListBox)
+                    {
+                        (ctrl as ListBox).Items.Clear();
+                    }
+                }
+            }
+            catch (NullReferenceException) { }
+
+           /* foreach (Course c in requiredCourses)
+            {
+                requiredCoursesBox.Items.Add(c);
+
+            }
+
+            foreach (Course c in socialScienceCourses)
+            {
+                socialScienceBox.Items.Add(c);
+            }
+
+            foreach (Course c in performingArtsCourses)
+            {
+                performingArtsBox.Items.Add(c);
+            }
+
+            foreach (Course c in scienceCourses)
+            {
+                scienceBox.Items.Add(c);
+            }
+
+            foreach (Course c in allCsCourses)
+            {
+                allCsBox.Items.Add(c);
+            }*/
+
+            BaseSchedule.Show();
+        }
+
+        private void requiredCoursesClick(object sender, EventArgs e)
+        {
+            List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
+
+            requiredCoursesBox.Items.Clear();
+
+            foreach (Course c in requiredCourses)
+            {
+                requiredCoursesBox.Items.Add(c);
+            }
+        }
+
+        private void computerScienceClick(object sender, EventArgs e)
+        {
+            List<Course> allCsCourses = sqlQuery.getAllCoursesFromTable("csce_all");
+
+            requiredCoursesBox.Items.Clear();
+
+            foreach (Course c in allCsCourses)
+            {
+                requiredCoursesBox.Items.Add(c);
+            }
+        }
+
+        private void socialSciencesClick(object sender, EventArgs e)
+        {
+            List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
+
+            requiredCoursesBox.Items.Clear();
+
+            foreach (Course c in socialScienceCourses)
+            {
+                requiredCoursesBox.Items.Add(c);
+            }
+        }
+
+        private void sciencesClick(object sender, EventArgs e)
+        {
+            List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
+
+            requiredCoursesBox.Items.Clear();
+
+            foreach (Course c in scienceCourses)
+            {
+                requiredCoursesBox.Items.Add(c);
+            }
+        }
+
+        private void performingArtsClick(object sender, EventArgs e)
+        {
+            List<Course> performingArtsCourses = sqlQuery.getAllCoursesFromTable("icd_vpae");
+
+            requiredCoursesBox.Items.Clear();
+
+            foreach (Course c in performingArtsCourses)
+            {
+                requiredCoursesBox.Items.Add(c);
+            }
         }
             
     }
