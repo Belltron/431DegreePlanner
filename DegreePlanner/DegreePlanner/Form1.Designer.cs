@@ -106,6 +106,9 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Senior";
             // 
+<<<<<<< HEAD
+=======
+>>>>>>> master
             // label8
             // 
             this.label8.AutoSize = true;
@@ -119,6 +122,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(682, 59);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+>>>>>>> master
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 23;
@@ -128,22 +134,52 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(615, 17);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+=======
+>>>>>>> master
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 13);
             this.label10.TabIndex = 24;
             this.label10.Text = "Social Sciences";
             // 
+<<<<<<< HEAD
+            // 
+            this.actionView.Location = new System.Drawing.Point(573, 476);
+            this.actionView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.actionView.Name = "actionView";
+            this.actionView.Size = new System.Drawing.Size(484, 125);
+            this.actionView.TabIndex = 25;
+            this.actionView.UseCompatibleStateImageBehavior = false;
+            this.actionView.View = System.Windows.Forms.View.List;
+            // 
+            // BaseSchedule
+            // 
+            this.BaseSchedule.Location = new System.Drawing.Point(573, 409);
+            this.BaseSchedule.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BaseSchedule.Name = "BaseSchedule";
+            this.BaseSchedule.Size = new System.Drawing.Size(159, 49);
+=======
             // BaseSchedule
             // 
             this.BaseSchedule.Location = new System.Drawing.Point(344, 41);
             this.BaseSchedule.Name = "BaseSchedule";
             this.BaseSchedule.Size = new System.Drawing.Size(76, 48);
+>>>>>>> master
             this.BaseSchedule.TabIndex = 27;
             this.BaseSchedule.Text = "Generate Base Schedule";
             this.BaseSchedule.UseVisualStyleBackColor = true;
             this.BaseSchedule.Click += new System.EventHandler(this.BaseSchedule_Click);
             // 
             // contextMenuStrip1
+            // 
+            this.PreReqsButton.Location = new System.Drawing.Point(849, 409);
+            this.PreReqsButton.Name = "PreReqsButton";
+            this.PreReqsButton.Size = new System.Drawing.Size(159, 49);
+            this.PreReqsButton.TabIndex = 28;
+            this.PreReqsButton.Text = "Check Pre-Reqs";
+            this.PreReqsButton.UseVisualStyleBackColor = true;
+            this.PreReqsButton.Click += new System.EventHandler(this.PreReqsButton_Click);
+=======
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.moreInformationToolStripMenuItem});
