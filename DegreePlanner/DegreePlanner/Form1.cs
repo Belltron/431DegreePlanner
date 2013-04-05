@@ -372,6 +372,19 @@ namespace DegreePlanner
                 requiredCoursesBox.Items.Add(c);
             }
         }
+
+        private void PreReqsButton_Click(object sender, EventArgs e)
+        {
+            Boolean valid = ValidityChecker.ValidPreReqs(this.schedule);
+            if (valid)
+            {
+                actionView.Items.Add("Valid Schedule");
+            }
+            else
+            {
+                actionView.Items.Add("Invalid Schedule");
+            }
+        }
             
     }
 }
