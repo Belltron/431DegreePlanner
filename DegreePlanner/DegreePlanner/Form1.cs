@@ -53,32 +53,6 @@ namespace DegreePlanner
                 }
             }
 
-       /*     foreach (Course c in requiredCourses)
-            {
-                requiredCoursesBox.Items.Add(c);
-         
-            }
-
-            foreach (Course c in socialScienceCourses)
-            {
-                socialScienceBox.Items.Add(c);
-            }
-
-            foreach (Course c in performingArtsCourses)
-            {
-                performingArtsBox.Items.Add(c);
-            }
-
-            foreach (Course c in scienceCourses)
-            {
-                scienceBox.Items.Add(c);
-            }
-
-            foreach (Course c in allCsCourses)
-            {
-                allCsBox.Items.Add(c);
-            }*/
-
         }
 
         private void addSemester(SemesterEnum id, YearEnum y)
@@ -271,8 +245,6 @@ namespace DegreePlanner
         }
 
         private void scheduleReset(object sender, EventArgs e)
-       
-
         {
             try
             {
@@ -285,32 +257,6 @@ namespace DegreePlanner
                 }
             }
             catch (NullReferenceException) { }
-
-           /* foreach (Course c in requiredCourses)
-            {
-                requiredCoursesBox.Items.Add(c);
-
-            }
-
-            foreach (Course c in socialScienceCourses)
-            {
-                socialScienceBox.Items.Add(c);
-            }
-
-            foreach (Course c in performingArtsCourses)
-            {
-                performingArtsBox.Items.Add(c);
-            }
-
-            foreach (Course c in scienceCourses)
-            {
-                scienceBox.Items.Add(c);
-            }
-
-            foreach (Course c in allCsCourses)
-            {
-                allCsBox.Items.Add(c);
-            }*/
 
             BaseSchedule.Show();
         }
@@ -375,17 +321,34 @@ namespace DegreePlanner
             }
         }
 
-      /*  private void PreReqsButton_Click(object sender, EventArgs e)
+        private void checkSchedule(object sender, EventArgs e)
         {
             Boolean valid = ValidityChecker.ValidPreReqs(this.schedule);
             if (valid)
             {
-                actionView.Items.Add("Valid Schedule");
+               // actionView.Items.Add("Valid Schedule");
+                try
+                {
+                    scheduleCheckOutput sco = new scheduleCheckOutput("Your Schedule is Valid");
+                    sco.Show();
+                }
+                catch (NullReferenceException) { }
             }
             else
             {
-                actionView.Items.Add("Invalid Schedule");
+               // actionView.Items.Add("Invalid Schedule");
+                try
+                {
+                    scheduleCheckOutput sco = new scheduleCheckOutput("Your Schedule is NOT Valid");
+                    sco.Show();
+                }
+                catch (NullReferenceException) { }
             }
+        }
+
+      /*  private void PreReqsButton_Click(object sender, EventArgs e)
+        {
+          
         }*/
             
     }
