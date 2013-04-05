@@ -272,6 +272,16 @@ namespace DegreePlanner
 
         private void scheduleReset(object sender, EventArgs e)
         {
+            Boolean valid = ValidityChecker.ValidPreReqs(this.schedule);
+            if (valid)
+            {
+                actionView.Items.Add("Valid Schedule");
+            }
+            else
+            {
+                actionView.Items.Add("Invalid Schedule");
+=======
+        {
             try
             {
                 foreach (Control ctrl in this.Controls)
