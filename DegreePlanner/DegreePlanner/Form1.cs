@@ -15,7 +15,7 @@ namespace DegreePlanner
     {
         Schedule schedule = new Schedule();
         FileSystem f = new FileSystem();
-        List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
+      /*  List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
         List<Course> performingArtsCourses = sqlQuery.getAllCoursesFromTable("icd_vpae");
         List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
         List<Course> allCsCourses = sqlQuery.getAllCoursesFromTable("csce_all");*/
