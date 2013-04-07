@@ -14,7 +14,7 @@ namespace DegreePlanner
     public partial class Form1 : Form
     {
         Schedule schedule = new Schedule();
-       /* List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
+        FileSystem f = new FileSystem();
         List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
         List<Course> performingArtsCourses = sqlQuery.getAllCoursesFromTable("icd_vpae");
         List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
@@ -40,7 +40,8 @@ namespace DegreePlanner
             addSemester((SemesterEnum)1, (YearEnum)2);
 
             addSemester((SemesterEnum)0, (YearEnum)3);
-            addSemester((SemesterEnum)1, (YearEnum)3);            
+            addSemester((SemesterEnum)1, (YearEnum)3);
+            schedule = f.readFromFile(schedule);
 
             foreach(Control ctrl in this.Controls)
             {
@@ -52,6 +53,7 @@ namespace DegreePlanner
                     ctrl.DragDrop += new DragEventHandler(listBox_DragDrop);
                 }
             }
+
 
         }
 
@@ -242,6 +244,11 @@ namespace DegreePlanner
             }
             requiredCoursesBox.Items.Clear();
             BaseSchedule.Hide();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            f.writeToFile(schedule);
         }
 
         private void scheduleReset(object sender, EventArgs e)
