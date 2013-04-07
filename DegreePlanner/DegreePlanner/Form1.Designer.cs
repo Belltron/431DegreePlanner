@@ -46,6 +46,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.departmentBox = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,7 +131,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(357, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(65, 47);
             this.button1.TabIndex = 28;
@@ -141,7 +143,7 @@
             // 
             this.requiredCoursesBox.FormattingEnabled = true;
             this.requiredCoursesBox.Location = new System.Drawing.Point(397, 110);
-            this.requiredCoursesBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.requiredCoursesBox.Margin = new System.Windows.Forms.Padding(2);
             this.requiredCoursesBox.Name = "requiredCoursesBox";
             this.requiredCoursesBox.Size = new System.Drawing.Size(169, 199);
             this.requiredCoursesBox.TabIndex = 31;
@@ -149,7 +151,7 @@
             // reqButton
             // 
             this.reqButton.Location = new System.Drawing.Point(570, 110);
-            this.reqButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.reqButton.Margin = new System.Windows.Forms.Padding(2);
             this.reqButton.Name = "reqButton";
             this.reqButton.Size = new System.Drawing.Size(127, 19);
             this.reqButton.TabIndex = 32;
@@ -160,7 +162,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(570, 147);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 19);
             this.button2.TabIndex = 33;
@@ -171,7 +173,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(570, 183);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(127, 19);
             this.button3.TabIndex = 34;
@@ -182,7 +184,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(570, 219);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(127, 19);
             this.button4.TabIndex = 35;
@@ -193,7 +195,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(570, 253);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(127, 19);
             this.button5.TabIndex = 36;
@@ -211,11 +213,31 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.checkSchedule);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(572, 288);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(125, 21);
+            this.button7.TabIndex = 38;
+            this.button7.Text = "Course by Department";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.departmentClick);
+            // 
+            // departmentBox
+            // 
+            this.departmentBox.FormattingEnabled = true;
+            this.departmentBox.Location = new System.Drawing.Point(703, 288);
+            this.departmentBox.Name = "departmentBox";
+            this.departmentBox.Size = new System.Drawing.Size(91, 21);
+            this.departmentBox.TabIndex = 39;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 496);
+            this.Controls.Add(this.departmentBox);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -259,6 +281,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ComboBox departmentBox;
     }
 }
 

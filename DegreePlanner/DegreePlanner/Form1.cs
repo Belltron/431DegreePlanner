@@ -15,20 +15,28 @@ namespace DegreePlanner
     {
         Schedule schedule = new Schedule();
         FileSystem f = new FileSystem();
-      /*  List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
+        List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
         List<Course> performingArtsCourses = sqlQuery.getAllCoursesFromTable("icd_vpae");
         List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
-        List<Course> allCsCourses = sqlQuery.getAllCoursesFromTable("csce_all");*/
+        List<Course> allCsCourses = sqlQuery.getAllCoursesFromTable("csce_all");
+        List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
+        List<string> departmentList = sqlQuery.getDepartments();
+        //ComboBox departmentBox = new ComboBox();
 
         public Form1()
         {
             Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
-            this.BackgroundImage = image;
+            this.BackgroundImage = image;        
 
-          //  Schedule schedule = new Schedule();
-
-            
             InitializeComponent();
+
+            departmentBox.Sorted = true;
+            requiredCoursesBox.Sorted = true;
+
+            foreach (string s in departmentList)
+            {
+                departmentBox.Items.Add(s);
+            }
             
             addSemester((SemesterEnum)0, (YearEnum)0);
             addSemester((SemesterEnum)1, (YearEnum)0);
@@ -53,8 +61,6 @@ namespace DegreePlanner
                     ctrl.DragDrop += new DragEventHandler(listBox_DragDrop);
                 }
             }
-
-
         }
 
         private void addSemester(SemesterEnum id, YearEnum y)
@@ -135,7 +141,6 @@ namespace DegreePlanner
 
         private void BaseSchedule_Click(object sender, EventArgs e)
         {
-            List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
             List<Semester> semesters = schedule.getSemesters();
             foreach (Semester s in semesters)
             {
@@ -270,8 +275,6 @@ namespace DegreePlanner
 
         private void requiredCoursesClick(object sender, EventArgs e)
         {
-            List<Course> requiredCourses = sqlQuery.getAllCoursesFromTable("required_classes");
-
             requiredCoursesBox.Items.Clear();
 
             foreach (Course c in requiredCourses)
@@ -282,8 +285,6 @@ namespace DegreePlanner
 
         private void computerScienceClick(object sender, EventArgs e)
         {
-            List<Course> allCsCourses = sqlQuery.getAllCoursesFromTable("csce_all");
-
             requiredCoursesBox.Items.Clear();
 
             foreach (Course c in allCsCourses)
@@ -294,8 +295,6 @@ namespace DegreePlanner
 
         private void socialSciencesClick(object sender, EventArgs e)
         {
-            List<Course> socialScienceCourses = sqlQuery.getAllCoursesFromTable("icd_sse");
-
             requiredCoursesBox.Items.Clear();
 
             foreach (Course c in socialScienceCourses)
@@ -306,8 +305,6 @@ namespace DegreePlanner
 
         private void sciencesClick(object sender, EventArgs e)
         {
-            List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
-
             requiredCoursesBox.Items.Clear();
 
             foreach (Course c in scienceCourses)
@@ -318,8 +315,6 @@ namespace DegreePlanner
 
         private void performingArtsClick(object sender, EventArgs e)
         {
-            List<Course> performingArtsCourses = sqlQuery.getAllCoursesFromTable("icd_vpae");
-
             requiredCoursesBox.Items.Clear();
 
             foreach (Course c in performingArtsCourses)
@@ -333,7 +328,6 @@ namespace DegreePlanner
             Boolean valid = ValidityChecker.ValidPreReqs(this.schedule);
             if (valid)
             {
-               // actionView.Items.Add("Valid Schedule");
                 try
                 {
                     scheduleCheckOutput sco = new scheduleCheckOutput("Your Schedule is Valid");
@@ -343,7 +337,6 @@ namespace DegreePlanner
             }
             else
             {
-               // actionView.Items.Add("Invalid Schedule");
                 try
                 {
                     scheduleCheckOutput sco = new scheduleCheckOutput("Your Schedule is NOT Valid");
@@ -353,10 +346,23 @@ namespace DegreePlanner
             }
         }
 
-      /*  private void PreReqsButton_Click(object sender, EventArgs e)
+        private void departmentClick(object sender, EventArgs e)
         {
-          
-        }*/
-            
+            try
+            {
+                string dept = departmentBox.SelectedItem.ToString();
+
+                List<Course> departmentCourses = sqlQuery.getCoursesByDepartment(dept);
+
+                requiredCoursesBox.Items.Clear();
+
+                foreach (Course c in departmentCourses)
+                {
+                    requiredCoursesBox.Items.Add(c);
+                }
+            }
+            catch (NullReferenceException) { };
+        }
+           
     }
 }
