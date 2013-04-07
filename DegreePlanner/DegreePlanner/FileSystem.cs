@@ -252,6 +252,7 @@ namespace DegreePlanner
                     Semester semester = semesters.SingleOrDefault(s => s.ID == SemesterEnum.Fall && s.year == YearEnum.Sophomore);
                     semester.semesterBox.Items.Add(c);
                 }
+                Fall2R.Close();
             }
             if (File.Exists("Spring2.txt"))
             {
