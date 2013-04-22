@@ -14,9 +14,10 @@ namespace DegreePlanner
 
             List<String> testerr = ValidPreReqs(inp);
 
-            schedErrs.Concat(testerr);
-            schedErrs.Concat(checkRequiredValidity(inp));
-            schedErrs.Concat(checkSpecificValidity(inp));
+            schedErrs.AddRange(ValidPreReqs(inp));
+            schedErrs.AddRange(checkRequiredValidity(inp));
+            schedErrs.AddRange(checkSpecificValidity(inp));
+            schedErrs.AddRange(checkUpperLevelValidity(inp));
 
             return schedErrs;
         }
