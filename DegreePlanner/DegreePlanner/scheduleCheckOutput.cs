@@ -20,12 +20,30 @@ namespace DegreePlanner
         public scheduleCheckOutput(string output)
         {
             InitializeComponent();
-            validityLabel.Text = output;
+         
+            errorBox.Text = output;
+        }
+
+        public scheduleCheckOutput(List<string> errorList)
+        {
+            InitializeComponent();
+
+            foreach (string s in errorList)
+            {
+                errorBox.Text += s;
+    
+                errorBox.Text += "\r\n";
+            }
         }
 
         private void closeWindow(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void scheduleCheckOutput_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

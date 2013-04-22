@@ -111,7 +111,7 @@ namespace DegreePlanner
             prerequisitesList.Add(pre);
         }
 
-        public static bool operator ==(Course c1, Course c2)
+       /* public static bool operator ==(Course c1, Course c2)
         {
           
             try{
@@ -129,7 +129,7 @@ namespace DegreePlanner
         public static bool operator !=(Course c1, Course c2)
         {
             return (!(c1 == c2));
-        }
+        }*/
 
     }
 }

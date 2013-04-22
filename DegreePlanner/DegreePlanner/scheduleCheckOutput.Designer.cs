@@ -30,11 +30,12 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.validityLabel = new System.Windows.Forms.Label();
+            this.errorBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(328, 54);
+            this.button1.Location = new System.Drawing.Point(341, 55);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -48,19 +49,28 @@
             this.validityLabel.Location = new System.Drawing.Point(30, 20);
             this.validityLabel.MaximumSize = new System.Drawing.Size(300, 13);
             this.validityLabel.Name = "validityLabel";
-            this.validityLabel.Size = new System.Drawing.Size(35, 13);
+            this.validityLabel.Size = new System.Drawing.Size(0, 13);
             this.validityLabel.TabIndex = 1;
-            this.validityLabel.Text = "label1";
+            // 
+            // errorBox
+            // 
+            this.errorBox.Location = new System.Drawing.Point(12, 12);
+            this.errorBox.Multiline = true;
+            this.errorBox.Name = "errorBox";
+            this.errorBox.Size = new System.Drawing.Size(323, 105);
+            this.errorBox.TabIndex = 2;
             // 
             // scheduleCheckOutput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 132);
+            this.Controls.Add(this.errorBox);
             this.Controls.Add(this.validityLabel);
             this.Controls.Add(this.button1);
             this.Name = "scheduleCheckOutput";
             this.Text = "scheduleCheckOutput";
+            this.Load += new System.EventHandler(this.scheduleCheckOutput_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,5 +80,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label validityLabel;
+        private System.Windows.Forms.TextBox errorBox;
     }
 }
