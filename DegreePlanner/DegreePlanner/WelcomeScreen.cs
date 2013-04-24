@@ -19,8 +19,8 @@ namespace DegreePlanner
         {
             InitializeComponent();
             label1.BackColor = Color.Transparent;
-            Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
-            this.BackgroundImage = image;
+            //Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
+            //this.BackgroundImage = image;
             this.Controls.Add(loading);
         
         }
