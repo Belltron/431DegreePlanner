@@ -331,11 +331,12 @@ namespace DegreePlanner
             List<string> errors = ValidityChecker.checkGraduatingValidity(this.schedule);
            // List<string> errors = ValidityChecker.checkSpecificValidity(this.schedule);
            // List<string> errors = ValidityChecker.checkUpperLevelValidity(this.schedule);
+           // List<string> errors = ValidityChecker.checkScienceValidity(this.schedule);
             if (errors.Count == 0)
             {
                 try
                 {
-                    scheduleCheckOutput sco = new scheduleCheckOutput("Your Schedule is Valid");
+                    scheduleCheckOutput sco = new scheduleCheckOutput("You are on track to graduate!!");
                     sco.Show();
                 }
                 catch (NullReferenceException) { }

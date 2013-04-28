@@ -17,7 +17,7 @@ namespace DegreePlanner
         Fall = 0, Spring, Summer1, Summer2
     }
     
-    public class Course
+    public class Course : IEquatable<Course>
     {
         public string Description;
         public int CourseNum;
@@ -109,6 +109,14 @@ namespace DegreePlanner
         public void addPrerequisite(Course pre)
         {
             prerequisitesList.Add(pre);
+        }
+
+
+        public bool Equals(Course other)
+        {
+            // good enough for now to only compare department and course num
+            if (this.Department == other.Department && this.CourseNum == other.CourseNum) return true;
+            else return false;
         }
 
        /* public static bool operator ==(Course c1, Course c2)

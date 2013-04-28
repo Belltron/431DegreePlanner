@@ -18,6 +18,7 @@ namespace DegreePlanner
             schedErrs.AddRange(checkRequiredValidity(inp));
             schedErrs.AddRange(checkSpecificValidity(inp));
             schedErrs.AddRange(checkUpperLevelValidity(inp));
+            schedErrs.AddRange(checkScienceValidity(inp));
 
             return schedErrs;
         }
@@ -235,6 +236,128 @@ namespace DegreePlanner
             }
 
             return scheduleErrors;
+        }
+
+        static public List<String> checkScienceValidity(Schedule input)
+        {
+            List<string> scheduleErrors = new List<string>();
+
+            List<Course> chemistryOption = new List<Course>();
+            List<Course> physicsOption = new List<Course>();
+            List<Course> lifeSciencesOptionA = new List<Course>();
+            List<Course> earthSciencesOptionA = new List<Course>();
+            List<Course> lifeSciencesOptionB = new List<Course>();
+            List<Course> earthSciencesOptionB = new List<Course>();
+
+            List<Semester> semesters = input.getSemesters();
+
+            List<Course> scienceCourses = sqlQuery.getAllCoursesFromTable("science_classes");
+
+            Course chem101 = scienceCourses.SingleOrDefault(c => c.CourseNum == 101 && c.Department == ("CHEM"));
+            Course chem111 = scienceCourses.SingleOrDefault(c => c.CourseNum == 111 && c.Department == ("CHEM"));
+            Course chem102 = scienceCourses.SingleOrDefault(c => c.CourseNum == 102 && c.Department == ("CHEM"));
+            Course chem112 = scienceCourses.SingleOrDefault(c => c.CourseNum == 112 && c.Department == ("CHEM"));
+            chemistryOption.Add(chem101);
+            chemistryOption.Add(chem111);
+            chemistryOption.Add(chem102);
+            chemistryOption.Add(chem112);
+            
+
+            Course phys218 = scienceCourses.SingleOrDefault(c => c.CourseNum == 218 && c.Department == ("PHYS"));
+            Course phys208 = scienceCourses.SingleOrDefault(c => c.CourseNum == 208 && c.Department == ("PHYS"));
+            physicsOption.Add(phys218);
+            physicsOption.Add(phys208);
+
+
+            Course biol111 = scienceCourses.SingleOrDefault(c => c.CourseNum == 111 && c.Department == ("BIOL"));
+            Course biol112 = scienceCourses.SingleOrDefault(c => c.CourseNum == 112 && c.Department == ("BIOL"));
+            lifeSciencesOptionA.Add(biol111);
+            lifeSciencesOptionA.Add(biol112);
+
+            Course biol101 = scienceCourses.SingleOrDefault(c => c.CourseNum == 101 && c.Department == ("BIOL"));
+            Course biol107 = scienceCourses.SingleOrDefault(c => c.CourseNum == 107 && c.Department == ("BIOL"));
+            lifeSciencesOptionB.Add(biol111);
+            lifeSciencesOptionB.Add(biol101);
+            lifeSciencesOptionB.Add(biol107);
+
+            Course geol101 = scienceCourses.SingleOrDefault(c => c.CourseNum == 101 && c.Department == ("GEOL"));
+            Course geol106 = scienceCourses.SingleOrDefault(c => c.CourseNum == 106 && c.Department == ("GEOL"));
+            earthSciencesOptionA.Add(geol101);
+            earthSciencesOptionA.Add(geol106);
+
+            Course geol203 = scienceCourses.SingleOrDefault(c => c.CourseNum == 203 && c.Department == ("GEOL"));
+            Course atmo201 = scienceCourses.SingleOrDefault(c => c.CourseNum == 201 && c.Department == ("ATMO"));
+            Course atmo202 = scienceCourses.SingleOrDefault(c => c.CourseNum == 202 && c.Department == ("ATMO"));
+            Course renr205 = scienceCourses.SingleOrDefault(c => c.CourseNum == 205 && c.Department == ("RENR"));
+            Course renr215 = scienceCourses.SingleOrDefault(c => c.CourseNum == 215 && c.Department == ("RENR"));
+            earthSciencesOptionB.Add(geol203);
+            earthSciencesOptionB.Add(atmo201);
+            earthSciencesOptionB.Add(atmo202);
+            earthSciencesOptionB.Add(renr205);
+            earthSciencesOptionB.Add(renr215);
+
+           foreach (Semester s in semesters)
+            {
+                foreach (Course cur in s.semesterBox.Items)
+                {
+                    if (chemistryOption.Contains(cur)) chemistryOption.Remove(cur);
+                    if (physicsOption.Contains(cur)) physicsOption.Remove(cur);
+                    if (lifeSciencesOptionA.Contains(cur)) lifeSciencesOptionA.Remove(cur);
+                    if (lifeSciencesOptionB.Contains(cur)) lifeSciencesOptionB.Remove(cur);
+                    if (earthSciencesOptionA.Contains(cur)) earthSciencesOptionA.Remove(cur);
+                    if (earthSciencesOptionB.Contains(cur)) earthSciencesOptionB.Remove(cur);
+                }
+            }
+
+           Boolean chemBool = (chemistryOption.Count == 0);
+           Boolean physBool = (physicsOption.Count == 0);
+           Boolean lifeABool = (lifeSciencesOptionA.Count == 0);
+           Boolean lifeBBool = (lifeSciencesOptionB.Count <= 1);
+           Boolean earthABool = (earthSciencesOptionA.Count == 0);
+           Boolean earthBBool;
+
+           // atmo 201/201 and renr 205/215 should be taken
+           if (earthSciencesOptionB.Contains(geol203))          
+           {
+               earthBBool = (earthSciencesOptionB.Count <= 1);
+           }
+           // geol 203 and renr 205/215 should be taken
+           else if (earthSciencesOptionB.Contains(atmo201) || earthSciencesOptionB.Contains(atmo202))
+           {
+               earthBBool = ((earthSciencesOptionB.Count <= 2) && !(earthSciencesOptionB.Contains(renr205)) && !(earthSciencesOptionB.Contains(renr205)));
+           }
+           // geol 203 and atmo 201/202 should be taken
+           else if (earthSciencesOptionB.Contains(renr205) || earthSciencesOptionB.Contains(renr215))
+           {
+               earthBBool = ((earthSciencesOptionB.Count <= 2) && !(earthSciencesOptionB.Contains(atmo201)) && !(earthSciencesOptionB.Contains(atmo202)));
+           }
+           // all have been taken, safe
+           else earthBBool = (earthSciencesOptionB.Count == 0);
+
+           // ACTUAL VALIDATION 
+           /* Valid Possibilities:
+            * chemBool = T, physBool = T
+            * chemBool = T, lifeABool = T
+            * chemBool = T, lifeBBool = T
+            * chemBool = T, earthABool = T
+            * chemBool = T, earthBBool = T
+            * physBool = T, lifeABool = T
+            * physBool = T, lifeBBool = T
+            * physBool = T, earthABool = T
+            * physBool = T, earthBBool = T
+            * lifeABool = T, earthBBool = T
+            * lifeBBool = T, earthABool = T
+            */
+
+           if (!((chemBool && physBool) || (chemBool && lifeABool) || (chemBool && lifeBBool) || (chemBool && earthABool) || (chemBool && earthBBool)
+               || (physBool && lifeABool) || (physBool && lifeBBool) || (physBool && earthABool) || (physBool && earthBBool)
+               || (lifeABool && earthBBool) || (lifeBBool && earthABool)))
+           {
+               string err = "Review the science courses and take the correct combination.";
+               scheduleErrors.Add(err);
+           }
+            
+           return scheduleErrors;
         }
     }
 }
