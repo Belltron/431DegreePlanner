@@ -81,6 +81,7 @@ namespace DegreePlanner
 
             List<Semester> semesters = input.getSemesters();
             List<string> scheduleErrors = new List<string>();
+            bool upperMath = false;
 
             foreach (Course req in requiredCourses)
             {
@@ -90,6 +91,7 @@ namespace DegreePlanner
                     foreach (Course cur in s.semesterBox.Items)
                     {
                         if (req.Department == cur.Department && req.CourseNum == cur.CourseNum) requiredCheck = true;
+                        if ((cur.Department == "MATH" && cur.CourseNum == 304) || (cur.Department == "MATH" && cur.CourseNum == 308)) upperMath = true;
                     }
                 }
                 if (requiredCheck == false)
@@ -97,6 +99,11 @@ namespace DegreePlanner
                     string err = req.Department + " " + req.CourseNum.ToString() + " should be on your schedule";
                     scheduleErrors.Add(err);
                 }
+            }
+            if (upperMath == false)
+            {
+                string mathErr = "Either MATH 304 or MATH 308 must be taken.";
+                scheduleErrors.Add(mathErr);
             }
             return scheduleErrors;
         }
@@ -109,7 +116,7 @@ namespace DegreePlanner
             List<Semester> semesters = input.getSemesters();
             List<string> scheduleErrors = new List<string>();
             bool vpae = false;
-            bool sse = false;
+            bool sse = false;          
 
             foreach (Semester s in semesters)
             {
@@ -223,7 +230,7 @@ namespace DegreePlanner
                 scheduleErrors.Add(algErr);
             }
 
-            if (softwareCount < 3 && algCount < 3 && systemsCount < 3 && softwareCount < 3)
+            if (softwareCount < 3 && algCount < 3 && systemsCount < 3 && infoCount < 3)
             {
                 string threeErr = "At lease three courses from one track must be taken";
                 scheduleErrors.Add(threeErr);

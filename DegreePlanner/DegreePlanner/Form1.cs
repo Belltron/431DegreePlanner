@@ -24,8 +24,8 @@ namespace DegreePlanner
 
         public Form1()
         {
-            //Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
-            //this.BackgroundImage = image;        
+            Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
+            this.BackgroundImage = image;        
 
             InitializeComponent();
 
@@ -326,12 +326,10 @@ namespace DegreePlanner
 
         private void checkSchedule(object sender, EventArgs e)
         {
-         //   Boolean valid = ValidityChecker.ValidPreReqs(this.schedule);
-            //List<string> errors = ValidityChecker.ValidPreReqs(this.schedule);
+            this.Cursor = Cursors.WaitCursor;
             List<string> errors = ValidityChecker.checkGraduatingValidity(this.schedule);
-           // List<string> errors = ValidityChecker.checkSpecificValidity(this.schedule);
-           // List<string> errors = ValidityChecker.checkUpperLevelValidity(this.schedule);
-           // List<string> errors = ValidityChecker.checkScienceValidity(this.schedule);
+            this.Cursor = Cursors.Default;
+       
             if (errors.Count == 0)
             {
                 try
