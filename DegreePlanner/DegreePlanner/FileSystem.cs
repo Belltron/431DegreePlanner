@@ -15,18 +15,18 @@ namespace DegreePlanner
 
         public void writeToFile(Schedule schedule)
         {
-            System.IO.StreamWriter Fall1 = new System.IO.StreamWriter("Fall1.txt");
-            System.IO.StreamWriter Spring1 = new System.IO.StreamWriter("Spring1.txt");
-            System.IO.StreamWriter Summer1 = new System.IO.StreamWriter("Summer1.txt");
-            System.IO.StreamWriter Fall2 = new System.IO.StreamWriter("Fall2.txt");
-            System.IO.StreamWriter Spring2 = new System.IO.StreamWriter("Spring2.txt");
-            System.IO.StreamWriter Summer2 = new System.IO.StreamWriter("Summer2.txt");
-            System.IO.StreamWriter Fall3 = new System.IO.StreamWriter("Fall3.txt");
-            System.IO.StreamWriter Spring3 = new System.IO.StreamWriter("Spring3.txt");
-            System.IO.StreamWriter Summer3 = new System.IO.StreamWriter("Summer3.txt");
-            System.IO.StreamWriter Fall4 = new System.IO.StreamWriter("Fall4.txt");
-            System.IO.StreamWriter Spring4 = new System.IO.StreamWriter("Spring4.txt");
-            System.IO.StreamWriter Summer4 = new System.IO.StreamWriter("Summer4.txt");
+            System.IO.StreamWriter Fall1 = new System.IO.StreamWriter(@"Freshman\Fall1.txt");
+            System.IO.StreamWriter Spring1 = new System.IO.StreamWriter(@"Freshman\Spring1.txt");
+            System.IO.StreamWriter Summer1 = new System.IO.StreamWriter(@"Freshman\Summer1.txt");
+            System.IO.StreamWriter Fall2 = new System.IO.StreamWriter(@"Sophomore\Fall2.txt");
+            System.IO.StreamWriter Spring2 = new System.IO.StreamWriter(@"Sophomore\Spring2.txt");
+            System.IO.StreamWriter Summer2 = new System.IO.StreamWriter(@"Sophomore\Summer2.txt");
+            System.IO.StreamWriter Fall3 = new System.IO.StreamWriter(@"Junior\Fall3.txt");
+            System.IO.StreamWriter Spring3 = new System.IO.StreamWriter(@"Junior\Spring3.txt");
+            System.IO.StreamWriter Summer3 = new System.IO.StreamWriter(@"Junior\Summer3.txt");
+            System.IO.StreamWriter Fall4 = new System.IO.StreamWriter(@"Senior\Fall4.txt");
+            System.IO.StreamWriter Spring4 = new System.IO.StreamWriter(@"Senior\Spring4.txt");
+            System.IO.StreamWriter Summer4 = new System.IO.StreamWriter(@"Senior\Summer4.txt");
             foreach (Semester s in schedule.getSemesters())
             {
                 if (s.ID == SemesterEnum.Fall && s.year == YearEnum.Freshman)
@@ -186,9 +186,9 @@ namespace DegreePlanner
         public Schedule readFromFile(Schedule schedule)
         {
             string line;
-            if (File.Exists("Fall1.txt"))
+            if (File.Exists(@"Freshman\Fall1.txt"))
             {
-                System.IO.StreamReader Fall1R = new System.IO.StreamReader("Fall1.txt");
+                System.IO.StreamReader Fall1R = new System.IO.StreamReader(@"Freshman\Fall1.txt");
                 while ((line = Fall1R.ReadLine()) != null || (line = Fall1R.ReadLine()) == "")
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -203,9 +203,11 @@ namespace DegreePlanner
                 }
                 Fall1R.Close();
             }
-            if (File.Exists("Spring1.txt"))
+            else
+                System.IO.Directory.CreateDirectory("Freshman");
+            if (File.Exists(@"Freshman\Spring1.txt"))
             {
-                System.IO.StreamReader Spring1R = new System.IO.StreamReader("Spring1.txt");
+                System.IO.StreamReader Spring1R = new System.IO.StreamReader(@"Freshman\Spring1.txt");
                 while ((line = Spring1R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -220,9 +222,10 @@ namespace DegreePlanner
                 }
                 Spring1R.Close();
             }
-            if (File.Exists("Summer1.txt"))
+
+                if (File.Exists(@"Freshman\Summer1.txt"))
             {
-                System.IO.StreamReader Summer1R = new System.IO.StreamReader("Summer1.txt");
+                System.IO.StreamReader Summer1R = new System.IO.StreamReader(@"Freshman\Summer1.txt");
                 while ((line = Summer1R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -237,9 +240,9 @@ namespace DegreePlanner
                 }
                 Summer1R.Close();
             }
-            if (File.Exists("Fall2.txt"))
+            if (File.Exists(@"Sophomore\Fall2.txt"))
             {
-                System.IO.StreamReader Fall2R = new System.IO.StreamReader("Fall2.txt");
+                System.IO.StreamReader Fall2R = new System.IO.StreamReader(@"Sophomore\Fall2.txt");
                 while ((line = Fall2R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -254,9 +257,11 @@ namespace DegreePlanner
                 }
                 Fall2R.Close();
             }
-            if (File.Exists("Spring2.txt"))
+            else
+                System.IO.Directory.CreateDirectory("Sophomore");
+            if (File.Exists(@"Sophomore\Spring2.txt"))
             {
-                System.IO.StreamReader Spring2R = new System.IO.StreamReader("Spring2.txt");
+                System.IO.StreamReader Spring2R = new System.IO.StreamReader(@"Sophomore\Spring2.txt");
                 while ((line = Spring2R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -271,9 +276,9 @@ namespace DegreePlanner
                 }
                 Spring2R.Close();
             }
-            if (File.Exists("Summer2.txt"))
+            if (File.Exists(@"Sophomore\Summer2.txt"))
             {
-                System.IO.StreamReader Summer2R = new System.IO.StreamReader("Summer2.txt");
+                System.IO.StreamReader Summer2R = new System.IO.StreamReader(@"Sophomore\Summer2.txt");
                 while ((line = Summer2R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -288,9 +293,9 @@ namespace DegreePlanner
                 }
                 Summer2R.Close();
             }
-            if (File.Exists("Fall3.txt"))
+            if (File.Exists(@"Junior\Fall3.txt"))
             {
-            System.IO.StreamReader Fall3R = new System.IO.StreamReader("Fall3.txt");
+                System.IO.StreamReader Fall3R = new System.IO.StreamReader(@"Junior\Fall3.txt");
             while ((line = Fall3R.ReadLine()) != null)
             {
                 List<string> tokens = line.Split('|').ToList();
@@ -305,9 +310,11 @@ namespace DegreePlanner
             }
             Fall3R.Close();
             }
-            if (File.Exists("Spring3.txt"))
+            else
+                System.IO.Directory.CreateDirectory("Junior");
+            if (File.Exists(@"Junior\Spring3.txt"))
             {
-                System.IO.StreamReader Spring3R = new System.IO.StreamReader("Spring3.txt");
+                System.IO.StreamReader Spring3R = new System.IO.StreamReader(@"Junior\Spring3.txt");
                 while ((line = Spring3R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -322,9 +329,9 @@ namespace DegreePlanner
                 }
                 Spring3R.Close();
             }
-            if (File.Exists("Summer3.txt"))
+            if (File.Exists(@"Junior\Summer3.txt"))
             {
-                System.IO.StreamReader Summer3R = new System.IO.StreamReader("Summer3.txt");
+                System.IO.StreamReader Summer3R = new System.IO.StreamReader(@"Junior\Summer3.txt");
                 while ((line = Summer3R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -339,9 +346,9 @@ namespace DegreePlanner
                 }
                 Summer3R.Close();
             }
-            if (File.Exists("Fall4.txt"))
+            if (File.Exists(@"Senior\Fall4.txt"))
             {
-                System.IO.StreamReader Fall4R = new System.IO.StreamReader("Fall4.txt");
+                System.IO.StreamReader Fall4R = new System.IO.StreamReader(@"Senior\Fall4.txt");
                 while ((line = Fall4R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -356,9 +363,11 @@ namespace DegreePlanner
                 }
                 Fall4R.Close();
             }
-            if (File.Exists("Spring4.txt"))
+            else
+                System.IO.Directory.CreateDirectory("Senior");
+            if (File.Exists(@"Senior\Spring4.txt"))
             {
-                System.IO.StreamReader Spring4R = new System.IO.StreamReader("Spring4.txt");
+                System.IO.StreamReader Spring4R = new System.IO.StreamReader(@"Senior\Spring4.txt");
                 while ((line = Spring4R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();
@@ -373,9 +382,9 @@ namespace DegreePlanner
                 }
                 Spring4R.Close();
             }
-            if (File.Exists("Summer4.txt"))
+            if (File.Exists(@"Senior\Summer4.txt"))
             {
-                System.IO.StreamReader Summer4R = new System.IO.StreamReader("Summer4.txt");
+                System.IO.StreamReader Summer4R = new System.IO.StreamReader(@"Senior\Summer4.txt");
                 while ((line = Summer4R.ReadLine()) != null)
                 {
                     List<string> tokens = line.Split('|').ToList();

@@ -24,8 +24,8 @@ namespace DegreePlanner
 
         public Form1()
         {
-            Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
-            this.BackgroundImage = image;        
+            //Image image = Image.FromFile(@"C:\Users\Brian\Pictures\backgrounds\atm.jpg");
+            //this.BackgroundImage = image;        
 
             InitializeComponent();
 
